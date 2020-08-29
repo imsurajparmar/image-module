@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Image Module</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/fabric.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col" style="height: 20px;"></div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h1>Image Module</h1>
+                <canvas id="image-canvas" width="550" height="550" style=" border: 2px solid #999;"></canvas>
+            </div>
+            <div class="col is-drawing">
+                <button id="drawing-mode" class="btn btn-info">Cancel drawing mode</button>
+                <br /><br />
+                <button id="clear-canvas" class="btn btn-info">Clear</button>
+                <br /><br />
+                <div id="drawing-mode-options">
+                    <label for="drawing-line-width">Line width:</label>
+                    <span class="info">0</span><input type="range" value="1" min="0" max="10" id="drawing-line-width"><br>
+                    <input type="color" value="#000000" id="drawing-color">
+                </div>
+            </div>
+            <div class="col not-drawing" style="display: none;">
+                <div class="tab-content">
+                    <input type="text" class="form-control" placeholder="Enter text" id="printText"  />
+                    <br />
+                    <button class="btn btn-primary" id="addText">Add Text</button>
+                    <br /><br />
+                    <button class="btn btn-primary" id="addImage">Add Image</button>
+                    <br /><br />
+                    <button class="btn btn-success" id="output">Output</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/module.js"></script>
+</html>
