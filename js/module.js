@@ -1,7 +1,22 @@
 var canvas = new fabric.Canvas('image-canvas', {
-    isDrawingMode: true
+    isDrawingMode: true,
 });
 fabric.Object.prototype.transparentCorners = false;
+$(document).on("click","#zoomIn", function() {
+    if(canvas){
+        canvas.setZoom(canvas.getZoom() *1.1), canvas.renderAll();
+    }
+});
+$(document).on("click","#zoomOut", function() { 
+    if(canvas){
+        canvas.setZoom(canvas.getZoom() * 0.9), canvas.renderAll(); 
+    }
+});
+$(document).on("click","#zoomReset", function() { 
+    if(canvas){
+        canvas.setZoom(1), canvas.renderAll();
+    }
+});
 $(document).on("click","#drawing-mode", function() {
     canvas.isDrawingMode = !canvas.isDrawingMode;
     if (canvas.isDrawingMode) {
@@ -12,7 +27,6 @@ $(document).on("click","#drawing-mode", function() {
         $('#drawing-mode-options').hide(), $('.not-drawing').show();
     }
 });
-$(document).on("click","#clear-canvas", function() { canvas && canvas.clear(); });
 $(document).on("change","#drawing-line-width", function() { 
     canvas.freeDrawingBrush.width = parseInt(this.value, 10) || 1;
     this.previousSibling.innerHTML = this.value;
@@ -26,8 +40,7 @@ $(document).on("click","#addText", function() {
     if (canvas && textvalue && textvalue.trim()){
         var textObj = new fabric.IText(textvalue, {
             left: 100, top: 100,
-            fontSize: 24, fill: "#000000",
-            fontFamily: 'helvetica neue',
+            fill: "#000000", fontFamily: 'helvetica neue',
             strokeWidth: .1, fontSize: 24,
             originX: 'center', originY: 'center',
         });
@@ -45,14 +58,20 @@ $(document).on("click","#addImage", function(e) {
             });
             canvas.renderAll();
         });
-    }         
+    }
 });
-$(document).on("click","#output", function() { canvas && canvas.toDataURL(); });
 $(document).keydown(function(e) {
     var activeObj = canvas.getActiveObject();
     if(canvas && activeObj){
         e.keyCode == 46 && canvas.remove(activeObj);
         canvas.renderAll();
+    }
+});
+$(document).on("click","#clear-canvas", function() { canvas && canvas.clear(); });
+$(document).on("click","#output", function() { 
+    if(canvas){
+        $('#outputFile').attr('src', canvas.toDataURL());
+        $('#outputFile').show();
     }
 });
 function cornerSet(object){

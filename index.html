@@ -19,6 +19,14 @@
                 <h1>Image Module</h1>
                 <canvas id="image-canvas" width="550" height="550" style=" border: 2px solid #999;"></canvas>
             </div>
+            <div class="col zooming">
+                <button class="btn btn-primary" id="zoomIn">Zoom In</button>
+                <br /><br />
+                <button class="btn btn-primary" id="zoomOut">Zoom Out</button>
+                <br /><br />
+                <button class="btn btn-success" id="zoomReset">Reset Zoom</button>
+            </div>
+            <br />
             <div class="col is-drawing">
                 <button id="drawing-mode" class="btn btn-info">Cancel drawing mode</button>
                 <br /><br />
@@ -26,7 +34,9 @@
                 <br /><br />
                 <div id="drawing-mode-options">
                     <label for="drawing-line-width">Line width:</label>
-                    <span class="info">0</span><input type="range" value="1" min="0" max="10" id="drawing-line-width"><br>
+                    <span class="info">0</span><input type="range" value="0" min="0" max="10" id="drawing-line-width">
+                    <br />
+                    <label for="drawing-line-width">Line color:</label>
                     <input type="color" value="#000000" id="drawing-color">
                 </div>
             </div>
@@ -40,6 +50,9 @@
                     <br /><br />
                     <button class="btn btn-success" id="output">Output</button>
                 </div>
+            </div>
+            <div>
+                <img class="output-file" id="outputFile" src="" style="display: none;"></img>
             </div>
         </div>
     </div>
