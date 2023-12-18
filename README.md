@@ -1,2 +1,2 @@
 # image-module
-Image module using fabric js
+Mastering Canvas Drawings with Fabric.js - Your Comprehensive Guide to Crafting Stunning Visuals on GitHub.
